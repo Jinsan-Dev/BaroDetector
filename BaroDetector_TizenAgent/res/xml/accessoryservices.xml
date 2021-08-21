@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <application name="HelloMessageProvider" >
+        <serviceProfile
+            id="/sample/hellomessage"
+            name="HelloMessageProvider"
+            role="provider"
+            autoLaunchAppId="gbHGOEWTz1.HelloMessageProvider"
+            version="1.0" >
+            <supportedTransports>
+                <transport type="TRANSPORT_BT" />
+                <transport type="TRANSPORT_WIFI"/>
+            </supportedTransports>
+			<supportedFeatures>
+				<feature type="message"/>
+			</supportedFeatures>
+			<serviceChannel
+				id="110"
+				dataRate="high"
+				priority="high"
+				reliability="enable">
+			</serviceChannel>
+        </serviceProfile>
+    </application>
+</resources>
