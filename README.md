@@ -24,9 +24,11 @@ Tizen 에이전트 역할:
 
 ## 데이터 전처리
 
-### Moving avrage filter
+### Sliding window + Moving avrage filter
 
-Outlier가 많은 stream data를 smoothing하는 방법
+출입문을 열고, 통과하고, 닫는 일련의 과정이 3초 안에 이루어지기에 3초의 슬라이딩 윈도를 적용함
+
+Outlier가 많은 stream data를 smoothing하기 위해 Moving average filter 적용
 
 (논문에 들어갔던 비교하는 그림 두개 넣기)
 
