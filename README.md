@@ -17,10 +17,13 @@
 ### 데이터 수집 에이전트 (Android/Tizen)
 
 
+![Data collection agents](https://user-images.githubusercontent.com/88572107/139855303-18566ec3-2822-410b-bb1e-5075f6c6dbdf.png)
 
-Android 에이전트 역할:
 
-Tizen 에이전트 역할: 
+
+Android 에이전트 역할: 버튼을 통해 기압 데이터를 수집한 위치에 대한 GT 수집 역할
+
+Tizen 에이전트 역할: 내장된 압력센서를 이용하여 기압 데이터 수집 및 Android 에이전트로 데이터 파일 송신
 
 데이터 Labeling
 
