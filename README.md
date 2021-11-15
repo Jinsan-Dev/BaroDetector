@@ -37,7 +37,7 @@ Tizen 에이전트: 내장된 압력센서를 이용하여 기압 데이터 수�
 
 Outlier가 많은 stream data를 smoothing하기 위해 Moving average filter 적용
 
-(논문에 들어갔던 비교하는 그림 두개 넣기)
+![Barometer sensor stream data](https://user-images.githubusercontent.com/88572107/140635081-b00535d3-5109-413b-9c2e-23e3c774c7f3.PNG)
 
 ### Min-max normalization
 
