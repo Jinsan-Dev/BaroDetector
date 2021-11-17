@@ -61,11 +61,9 @@ Outlier가 많은 stream data를 smoothing하기 위해 Moving average filter �
 
 ## GPS 가시 위성
 
-밖에서 받는다는 가정 하지말고, 평균값에서 엄청 바뀌었는데 숫자 비교해보니 크다 -> 안에서 밖으로 나간거
-반대다 밖에서 안으로 들어간거 이렇게 해야 논리적이다
+![Number of visible satellite](https://user-images.githubusercontent.com/88572107/139855422-01de3b9e-4b0f-48e1-bdb8-5bc3cf9f1013.png)
 
-큐를 만들고, 20개의 값을 받아 평균값을 냄. 평균값에서 50% 이상 값이 차이날 경우 사용자의 위치에 변화가 있었다는 뜻
-실내에서 작동이 시작된 것도 고려
+GPS 데이터 내 가시 위성 개수는 사용자의 실내/외 상태와 강한 상관관계가 있다. 그림은 사용자의 위치에 따른 GPS 가시 위성의 개수 추이를 보여준다. 실내에선 주로 10개 이하로 감지하며, 실외로 이동할 경우 급격히 증가하여 최대 32개 이상 감지할 수 있다.
 
 ## Optimization
 
