@@ -16,6 +16,8 @@
 
 ## 데이터 수집
 
+다양한 환경에서도 신뢰성 있게 동작하기 위해 다중 환경을 고려한다. 사용자가 통과하는 문을 자동문, 회전문, 미는 문 및 당기는 문 총 4개의 출입 유형으로 나누어 데이터를 수집한다. 데이터 수집은 실내에서 실외, 실외에서 실내 총 2가지 시나리오에서 진행한다. 시립 도서관, 대형마트, 대학 건물 등 5층 이상의 높이를 가진 밀폐되지 않은 건물과 밀폐된 3m 이하의 가정 주택 등 다양한 장소에서 데이터를 수집한다. 학습을 위한 데이터 세트 개수는 총 80개이다. 4개의 출입 유형으로 나누어 각 문의 종류마다 20개의 데이터 세트가 있으며, 각 데이터 세트는 시나리오별로 나누어져 총 8종류의 데이터 세트로 구성되어 있다.
+
 ### 데이터 수집 에이전트 (Android/Tizen)
 
 
@@ -29,6 +31,7 @@ Tizen 에이전트: 내장된 압력센서를 이용하여 기압 데이터 수�
 
 * Android 에이전트에 나온대로 데이터를 수집하는 장소에 따라, Indoor, passing, Outdoor로 나누어 Labeling 함.
 
+
 ## 데이터 전처리
 
 ### Sliding window + Moving avrage filter
@@ -41,17 +44,20 @@ Outlier가 많은 stream data를 smoothing하기 위해 Moving average filter �
 
 ### Min-max normalization
 
-기계학습을 위해 scaling이 필요
-
-다양한 환경에서 수집한 데이터들을 0~1 사이의 값으로 만듦
+기계학습을 위해 scaling이 필요하다. 이를 위해 다양한 환경에서 수집한 데이터들을 0~1 사이의 값으로 scaling 하였다.
 
 ## Feature extraction
 
-Feature들이 나오게 된 배경 (유비컴 페이퍼/다른 페이퍼들 목록)
+슬라이딩 윈도 내에서 8개의 feature를 추출하였다. 각 feature에 절댓값을 적용해 실내에서 실외, 실외에서 실내 두 가지 경우를 모두 탐지할 수 있게 했다. feature들의 종류는 다음과 같다.
 
-결과적으로 어떤 feature들을 썼는지, 이에 대한 상관성은 얼마나 나왔는지
-
-(웨카 피처별 상관성 그림)
+    1. Rate of change: 기울기
+    2. Mean crossing rate: 평균을 지나는 횟수
+    3. Standard deviation: 표준편차
+    4. Inter quartile range: 사분위수 범위 (Q3 - Q1)
+    5. Kurtosis: 첨도
+    6. Root mean square: 제곱평균제곱근
+    7. Root sum square: 제곱합제곱근
+    8. Value difference: 최댓값과 최솟값의 차
 
 ## GPS 가시 위성
 
