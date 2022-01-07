@@ -43,11 +43,11 @@ Outlier가 많은 stream data를 smoothing하기 위해 Moving average filter �
 
 ### Min-max normalization
 
-기계학습을 위해 scaling이 필요. 이를 위해 다양한 환경에서 수집한 데이터들을 0~1 사이의 값으로 scaling 하였다.
+기계학습을 위해 scaling이 필요. 이를 위해 다양한 환경에서 수집한 데이터들을 0~1 사이의 값으로 scaling 하였음.
 
 ### Feature extraction
 
-슬라이딩 윈도 내에서 8개의 feature를 추출하였다. 각 feature에 절댓값을 적용해 실내에서 실외, 실외에서 실내 두 가지 경우를 모두 탐지할 수 있게 했다. feature들의 종류는 다음과 같다.
+슬라이딩 윈도 내에서 8개의 feature를 추출하였다. 각 feature에 절댓값을 적용해 실내에서 실외, 실외에서 실내 두 가지 경우를 모두 탐지할 수 있게 했다. feature들의 종류는 다음과 같음.
 
     1. Rate of change: 기울기
     2. Mean crossing rate: 평균을 지나는 횟수
@@ -70,6 +70,22 @@ GPS 데이터 내 가시 위성 개수는 사용자의 실내/외 상태와 강�
 
 ## 시스템 평가
 
+### ML classifier 비교 및 선정
+
+![ML classifier comparison](https://user-images.githubusercontent.com/88572107/140892323-9390ed8f-33b3-4e9b-8c17-5bd66a8ce38b.png)
+
+스마트워치 압력센서 데이터에서 추출한 8개의 feature들을 출입문의 종류(a:자동문, b:회전문, c:미는 문, d:당기는 문)에 나누어 6개의 ML classifier에 학습시켜 정확도를 비교하였음.
+사용된 classifier의 종류는 다음과 같음
+
+    1. Random Forest
+    2. J48 Decision tree
+    3. SMO (Sequential Minimal Optimization)
+    4. BN (Bayes Net)
+    5. NB (Naive Bayes)
+    6. LWL (Locally Weighted Learning)
+    
+이 중 Random Forest가 평균 88.53%의 정확도로 가장 높은 모습을 보여, 추후 실험은 이를 사용하였음.
+
 ### Optimization
 
 기압 데이터의 추이를 이용해 출입문 통과 이벤트를 탐지함 (Stream data). 기존에 설정하였던 3초의 슬라이딩 윈도우를 통해 보인 결과에서 높은 false positive rate (18%)를 관찰함. 이를 낮추고, 궁극적으로 정확도를 높이기 위한 방안 모색이 필요하였음.
@@ -80,4 +96,7 @@ GPS 데이터 내 가시 위성 개수는 사용자의 실내/외 상태와 강�
 
 결과 6초의 슬라이딩 윈도우에서 제일 높은 정확도를 보이는 것을 확인함
 
+### 건물 단위 위치 추적 시스템 검증
 
+
+### 배터리 사용량 
